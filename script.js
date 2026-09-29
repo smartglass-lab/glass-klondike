@@ -590,7 +590,7 @@
     paintHud(); paintHint();
     toast('🎉 クリア！');
     for (var f = 0; f < 4; f++) { var r = topRect(f + 2); burst(r.x + CW / 2, r.y + CH / 2, 30, f % 3 ? RED : '#ffffff', f * 120 + 250); }
-    setTimeout(function () { busy = false; winMenu(bestT, bestM); }, 1900);
+    setTimeout(function () { busy = false; winMenu(bestT, bestM); }, 1500);
   }
 
   // ---------- 画面とメニュー ----------
@@ -803,11 +803,11 @@
     }
     var target = m.draw ? { a: 'top', i: 0 } : held ? spotOf(m.dst, true) : spotOf(m.src, false);
     var k = navKey(target, !!held);
-    if (k) { handleKey(k); setTimeout(demoTick, 230); return; }
+    if (k) { handleKey(k); setTimeout(demoTick, 200); return; }
     var placing = m.draw || held;
     handleKey('Enter');
     if (placing) demo.step++;
-    setTimeout(demoTick, placing ? 650 : 520);
+    setTimeout(demoTick, placing ? 560 : 460);
   }
 
   // ---------- 起動 ----------
