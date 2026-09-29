@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=600, height=600, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="Meta Ray-Ban Display 用のクロンダイク・ソリティア。山札・捨て札・組札・場札7列を600×600に収め、D-padでカーソルを動かしてタップで取る・置く。置ける場所をハイライト、自動で組札へ、1手もどす、1枚／3枚めくり、勝利数の記録つき。依存ライブラリなし・オフライン動作。">
+  <meta name="mrbd-web-app-capable" content="yes">
+  <title>グラスソリティア — Glass Solitaire</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <div id="hud">
+      <span id="hud-left"></span>
+      <span id="hud-right"></span>
+    </div>
+
+    <!-- タイトル -->
+    <div id="title" class="screen">
+      <div class="panel">
+        <div class="logo"><span class="k">♠&#xFE0E;</span><span class="r">♥&#xFE0E;</span><span class="k">♣&#xFE0E;</span><span class="r">♦&#xFE0E;</span></div>
+        <div class="t-title">グラスソリティア</div>
+        <div class="t-sub" id="title-sub"></div>
+        <div class="menu-list" id="title-list"></div>
+      </div>
+    </div>
+
+    <!-- ゲーム（Canvas） -->
+    <div id="game" class="screen hidden">
+      <canvas id="cv" width="600" height="600"></canvas>
+      <div id="toast"></div>
+      <div id="hint"></div>
+    </div>
+
+    <!-- メニュー（ゲーム中・クリア後） -->
+    <div id="menu" class="screen hidden">
+      <div class="panel">
+        <div class="t-title small" id="menu-title"></div>
+        <div class="t-sub" id="menu-sub"></div>
+        <div class="menu-list" id="menu-list"></div>
+      </div>
+    </div>
+
+    <!-- つかいかた -->
+    <div id="howto" class="screen hidden">
+      <div class="panel wide">
+        <div class="t-title small">つかいかた</div>
+        <ul class="howto">
+          <li>場札を<b class="r">赤</b>と<b class="k">黒</b>交互に、<b class="key">1つ小さい数</b>で重ねる。空いた列には <b class="key">K</b> だけ置ける</li>
+          <li>組札はスートごとに <b class="key">A → K</b> の順。4つとも K までそろえばクリア</li>
+          <li><b class="key">←→</b> で列や山札・組札へ、<b class="key">↑↓</b> で列の中のカードをえらぶ</li>
+          <li><b class="key">タップ</b>でとる → <b class="ok">緑に光る場所</b>でタップして置く。もとの場所でもう一度タップすると<b class="key">自動で置く</b></li>
+          <li>山札をタップでめくる（1枚／3枚はメニューで切替）。上の <b class="key">≡</b> からメニュー・1手もどす</li>
+        </ul>
+        <div class="menu-list" id="howto-list"></div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
